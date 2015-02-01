@@ -1,0 +1,6 @@
+name: Nicolas Santini
+markdown: redcarpet
+pygments: true
+description: "My personal site"
+url: "nsantini.github.io"
+permalink: /posts/:title
