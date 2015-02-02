@@ -1,15 +1,13 @@
 ---
-layout: page
+layout: default
 title: Family
 ---
 
 <div class="home">
 
-  <h1>Family Posts</h1>
-
   <ul class="posts">
     {% for post in site.posts %}
-      {% if post.categories == 'family' %}
+      {% if post.categories contains 'family' %}
         <li>
           <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
           <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>

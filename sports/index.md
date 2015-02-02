@@ -1,15 +1,13 @@
 ---
-layout: page
+layout: default
 title: Sports
 ---
 
 <div class="home">
 
-  <h1>Sports Posts</h1>
-
   <ul class="posts">
     {% for post in site.posts %}
-      {% if post.categories == 'sports' %}
+      {% if post.categories contains 'sports' %}
         <li>
           <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
           <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
