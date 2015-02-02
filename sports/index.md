@@ -9,9 +9,9 @@ title: Sports
     {% for post in site.posts %}
       {% if post.categories contains 'sports' %}
         <li>
-          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
           <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
-          <p>{{ post.summary }}</p>
+          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <section>{{ post.excerpt }}</section>
         </li>
       {% endif %}
     {% endfor %}
