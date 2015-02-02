@@ -6,14 +6,12 @@ title: Family
 <div class="home">
 
   <ul class="posts">
-    {% for post in site.posts %}
-      {% if post.categories contains 'family' %}
-        <li>
-          <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
-          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <section>{{ post.excerpt }}</section>
-        </li>
-      {% endif %}
+    {% for post in site.categories.family %}
+      <li>
+        <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <section>{{ post.excerpt }}</section>
+      </li>
     {% endfor %}
   </ul>
 
