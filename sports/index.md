@@ -5,6 +5,9 @@ link: /sports
 ---
 
 <div class="home">
+  <section class="post-header">
+    <h2>{{ page.title }}</h2>
+  </section>
 
   <ul class="posts">
     {% for post in site.categories.sports %}
