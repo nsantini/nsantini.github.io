@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Sports
+title: Becoming an Athlete
+link: /sports
 ---
 
 <div class="home">
@@ -15,6 +16,6 @@ title: Sports
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="/sports/feed.xml">via RSS</a></p>
 
 </div>

@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Family
+title: Santini Family
+link: /family
 ---
 
 <div class="home">
@@ -15,6 +16,6 @@ title: Family
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="/family/feed.xml">via RSS</a></p>
 
 </div>

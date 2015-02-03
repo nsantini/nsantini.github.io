@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Tech
+title: Tech Talk
+link: /tech
 ---
 
 <div class="home">
@@ -15,6 +16,6 @@ title: Tech
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="/tech/feed.xml">via RSS</a></p>
 
 </div>

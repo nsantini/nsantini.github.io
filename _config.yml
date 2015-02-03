@@ -1,6 +1,6 @@
-name: Nicolas Santini
+name: Nicolas Santini On Demand
 markdown: redcarpet
 pygments: true
-description: "My personal site"
+description: "My personal account of life"
 url: "nsantini.github.io"
 permalink: /posts/:title
