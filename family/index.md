@@ -6,7 +6,7 @@ link: /family
 
 <div class="home">
   <section class="post-header">
-    <h2>{{ page.title }}</h2>
+    <h2><a href='{{ page.link }}'>{{ page.title }}</a></h2>
   </section>
 
   <ul class="posts">
