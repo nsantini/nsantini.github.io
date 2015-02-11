@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: family
 title: Santini Family
 link: /family
 ---
