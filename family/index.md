@@ -5,9 +5,6 @@ link: /family
 ---
 
 <div class="home">
-  <section class="post-header">
-    <h2><a href='{{ page.link }}'>{{ page.title }}</a></h2>
-  </section>
 
   <ul class="posts">
     {% for post in site.categories.family %}
