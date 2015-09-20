@@ -1,7 +1,7 @@
 ---
-layout: familypost
+layout: post
 title: "Rocky Road"
-categories: family
+categories: family public
 date:   2015-02-12 06:40:00
 ---
 

@@ -1,7 +1,7 @@
 ---
-layout: familypost
+layout: post
 title: "Not Long To Go"
-categories: family
+categories: family public
 date:   2015-02-04 07:40:00
 ---
 
