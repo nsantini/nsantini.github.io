@@ -2,16 +2,12 @@
 <html>
     {% include head.html %}
     <body>
-        <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+        <div class="mdl-layout mdl-js-layout">
             {% include header.html %}
-            <main class="mdl-layout__content">
-                <div class="demo-blog__posts mdl-grid">
-                    {{ content }}
-                </div>
-                <footer class="mdl-mini-footer">
-                    {% include footer.html %}
-                </footer>
+            <main class="mdl-layout__content mdl-grid">
+                {{ content }}
             </main>
+            {% include footer.html %}
         </div>
     </body>
 </html>
