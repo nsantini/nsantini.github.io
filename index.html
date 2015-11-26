@@ -1,13 +1,21 @@
 ---
 layout: default
 ---
+
 <h2>Posts</h2>
-<ul class="list-group">
-  {% for post in site.categories.public %}
-    <li class="list-group-item">
-      <h3>{{ post.title }}</h3>
-      <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-      <section>{{ post.content }}</section>
-    </li>
-  {% endfor %}
-</ul>
+{% for post in site.categories.public %}
+<div class="mdl-card amazing mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title mdl-color-text--grey-50">
+        <h3 class="quote">{{ post.title }}</h3>
+    </div>
+    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+        {{ post.content }}
+    </div>
+    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+          <div class="minilogo"></div>
+          <div>
+                <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+          </div>
+    </div>
+</div>
+{% endfor %}
