@@ -1,6 +1,0 @@
-name: Nicolas Santini
-markdown: redcarpet
-pygments: true
-description: "My personal account of life"
-url: "nsantini.github.io"
-permalink: /posts/:title
