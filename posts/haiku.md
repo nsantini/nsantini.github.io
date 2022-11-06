@@ -1,6 +1,8 @@
+---
 layout: page
 title: "Haiku"
 permalink: /posts/haiku
+---
 
 > a creepy crawler
 > wondering in the code,
