@@ -19,11 +19,15 @@
   <body>
     <header>
       <div class="inner">
-        <a href="{{ '/' | absolute_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-        <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Nicolas" class="button">
+        <div>
+          <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Nicolas" class="button" />
+        </div>
+        <div>
+          <a href="{{ '/' | absolute_url }}">
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          </a>
+          <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        </div>
       </div>
     </header>
 

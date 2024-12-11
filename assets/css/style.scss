@@ -6,10 +6,20 @@
 #main-content {
   width: 100%;
 }
+header {
+  //background: #2e7bcf url(../images/engineering.jpg) 0 0 repeat-x;
+  .inner {
+    display: flex;
+    flex-direction: row;
 
-header img.button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+
+      img.button {
+        height: 150px;
+      }
+    }
+  }
 }
