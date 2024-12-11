@@ -2,73 +2,92 @@
 layout: default
 ---
 
-<header class="header">
-  <div class="header-title">
-    <a href="{{ site.url }}{{ site.baseurl }}">{{ site.name }}</a>
-  </div>
-  <nav class="header-nav">
-    {% for nav in site.nav %}
-    {% if nav.url contains 'http://' or nav.url contains 'https://' %}
-    <a href="{{ nav.url }}">{{ nav.name }}</a>
-    {% else %}
-    <a href="{{ nav.url | prepend: site.baseurl }}">{{ nav.name }}</a>
-    {% endif %}
-    {% endfor %}
-  </nav>
-</header>
+<section id="services">
+  <h2>Services</h2>
+  <p>Unlock Your Business Potential with a Fractional CTO</p>
+  <h3>Why Choose a Fractional CTO?</h3>
+  <p>
+    In today's fast-paced tech landscape, having a dedicated Chief Technology
+    Officer (CTO) can be a game-changer. But not every business needs a
+    full-time CTO. That's where I come in.
+  </p>
 
-<div class="list">
-{% if site.posts.size == 0 %}
-  <h2>No post found</h2>
-{% else %}
-<!-- This loops through the paginated posts -->
-{% for post in paginator.posts %}
-  <div class="list-post">
-    {% if post.link %}
-    <a href="{{ post.link }}">
-    {% else %}
-    <a href="{{ post.url | prepend: site.baseurl }}">
-    {% endif %}  
-      <div class="list-post-date">
-        <time>{{ post.date | date_to_string }}</time>
-      </div>
-      <div class="list-post-title">
-        {{ post.title }}
-      </div>
-      {% if post.description %}
-      <div class="list-post-desc">
-        {{ post.description }}
-      </div>
-      {% endif %}
-    </a>
+  <h3>What I Offer</h3>
+  <ul>
+    <li>
+      <strong>Strategic Tech Leadership</strong>: Align your technology strategy
+      with your business goals.
+    </li>
+    <li>
+      <strong>Cost-Effective Solutions</strong>: Get top-tier expertise without
+      the full-time cost.
+    </li>
+    <li>
+      <strong>Scalable Tech Infrastructure</strong>: Build a robust, scalable
+      tech stack that grows with your business.
+    </li>
+    <li>
+      <strong>Innovation and Growth</strong>: Drive innovation and stay ahead of
+      the competition.
+    </li>
+  </ul>
 
+  <h3>Who Can Benefit?</h3>
+  <ul>
+    <li>
+      <strong>Startups</strong>: Get the tech leadership you need to scale
+      quickly.
+    </li>
+    <li>
+      <strong>SMEs and Scaleups</strong>: Optimize your tech investments and
+      improve operational efficiency.
+    </li>
+  </ul>
 
-  </div>
-{% endfor %}
-  <!-- Pagination links -->
-  <div class="list-pagination">
-    <span class="list-pagination-previous">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: 
-site.baseurl }}" class="previous">
-          &#xE000; previous
-        </a>
-      {% else %}
+  <h3>Let's Connect</h3>
+  <p>
+    Ready to take your business to the next level?
+    <a href="mailto:nsantini@gmail.com">Contact me</a> to discuss how I can help
+    you achieve your goals.
+  </p>
+</section>
 
-      {% endif %}
-    </span>
+<section id="why">
+  <h2>Why Nicolas Your Fractional CTO?</h2>
+  <p>
+    Choosing the right technology leader is crucial for your business's success.
+    Here's why I stand out:
+  </p>
 
-    <span class="list-pagination-next">
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl 
-}}" class="next">
-          next &#xE001;
-        </a>
-      {% else %}
+  <ul>
+    <li>
+      <strong>Proven Track Record</strong>: With years of experience in leading
+      tech teams, I have a history of driving successful projects and
+      innovations.
+    </li>
+    <li>
+      <strong>Tailored Solutions</strong>: I understand that every business is
+      unique. I offer customized strategies that align with your specific goals
+      and challenges.
+    </li>
+    <li>
+      <strong>Cost Efficiency</strong>: Benefit from top-tier expertise without
+      the overhead of a full-time executive.
+    </li>
+    <li>
+      <strong>Agility and Flexibility</strong>: I adapt quickly to changing
+      business needs and technology landscapes, ensuring your business stays
+      ahead.
+    </li>
+    <li>
+      <strong>Passion for Innovation</strong>: I am committed to fostering a
+      culture of innovation and continuous improvement.
+    </li>
+  </ul>
 
-      {% endif %}
-    </span>
-
-  </div>
-{% endif %}
-</div>
+  <p>
+    Let's work together to unlock your business's full potential.
+    <a href="mailto:nsantini@gmail.com">Contact me</a> today to learn more about
+    how I can help you achieve your goals.
+  </p>
+</section>

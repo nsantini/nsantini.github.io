@@ -1,3 +1,6 @@
-theme: minima
-title: Nico's brain
-description: Bookmark this to keep an eye on my project updates!
+domain: santini.nz add this line to the plugins list if you already have one
+title: Nicolas Santini
+description: Fractional CTO, Software Engineer, and Entrepreneur
+remote_theme: pages-themes/architect@v0.2.0
+plugins:
+  - jekyll-remote-theme #
