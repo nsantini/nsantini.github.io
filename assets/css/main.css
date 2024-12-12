@@ -24,7 +24,7 @@
   --background-color: #eceff4; /* Background color for the entire website, including individual sections */
   --default-color: #2e3440; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #3b4252; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #5e81ac; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #508bd2; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -909,7 +909,7 @@ section,
 
 .services .service-item p {
   line-height: 24px;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0;
 }
 
@@ -1016,7 +1016,7 @@ section,
 
 .testimonials .testimonial-item h4 {
   font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin: 0 0 10px 0;
 }
 
