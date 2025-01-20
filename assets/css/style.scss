@@ -18,3 +18,18 @@ a {
 p {
   color: #4c566a;
 }
+
+nav {
+  float: right;
+  a {
+    color: #4c566a;
+    margin-left: 1em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-lg {
+    width: 900px;
+    margin: 0 auto;
+  }
+}
