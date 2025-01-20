@@ -10,8 +10,8 @@
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
-      <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
-      <h2><a href="{{ "/blog" | absolute_url }}">Blog</a></h2>
+      <h1>{% if site.url %}<a href="{{ site.url }}">Home</a> | {% endif %}<a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+      {% if site.url %}<a href="{{ site.url }}">Home</a>{% endif %}
 
       {{ content }}
     </div>
