@@ -28,4 +28,5 @@ github_username: nsantini
 permalink: /blog/:year/:month/:day/:title:output_ext
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
+  - jekyll-feed
   - jekyll-remote-theme # add this line to the plugins list if you already have one
