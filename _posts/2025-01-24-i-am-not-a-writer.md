@@ -4,7 +4,7 @@ title: I am not a writer
 date: 2025-01-24 18:05 +1300
 ---
 
-No, I am not a writer. For many years u fantasised about the idea of bro g one though. I read books and many articles about the art of writing. But that didn’t make me one.
+No, I am not a writer. For many years I fantasised about the idea of being one though. I read books and many articles about the art of writing. But that didn’t make me one.
 
 I tried to do some writing all those years. But all I got were drafts of ideas that I could never take to competition.
 
