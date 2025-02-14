@@ -21,8 +21,14 @@
       <h1>{{ site.title }}</h1>
 
       {{ content }}
+      <div id="remark42"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <script>anchors.add();</script>
+    <script>
+      var remark_config = remark_config={site_id:"santini.nz",host:"http://remark.santini.nz",url:window.location.href,components:["embed","counter"]};
+    </script>
+
+    <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
   </body>
 </html>
