@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surfer Shoulder Training Routine</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    color: #f0f4f8;
+    padding: 24px 16px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #7dd3fc;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .subtitle {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+  }
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+  .day-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+  }
+  .day-card h2 {
+    font-size: 1.1rem;
+    color: #38bdf8;
+    margin-bottom: 4px;
+  }
+  .day-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .exercise {
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-left: 3px solid #0ea5e9;
+  }
+  .exercise-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+  }
+  .exercise-meta {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+  .rest-day {
+    border-left-color: #475569;
+    opacity: 0.7;
+  }
+  .rest-day .exercise-name { color: #94a3b8; }
+  .section-label-inner {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #38bdf8;
+    margin: 12px 0 6px;
+  }
+  .core-label { color: #fb923c; }
+  .core-ex { border-left-color: #fb923c; }
+  /* Core Library */
+  .core-section {
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+  .core-section h2 {
+    font-size: 1.5rem;
+    color: #fb923c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .core-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .core-card {
+    background: rgba(251,146,60,0.06);
+    border: 1px solid rgba(251,146,60,0.2);
+    border-radius: 14px;
+    padding: 18px;
+    transition: transform 0.2s;
+  }
+  .core-card:hover { transform: translateY(-2px); }
+  .core-card h3 { font-size: 1rem; color: #fb923c; margin-bottom: 6px; }
+  .core-card p { font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin-bottom: 10px; }
+  .core-card .target {
+    font-size: 0.75rem;
+    color: #fb923c;
+    background: rgba(251,146,60,0.1);
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .watch-btn-orange {
+    display: inline-block;
+    background: #ea580c;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .watch-btn-orange:hover { background: #c2410c; }
+  .watch-btn-orange::before { content: "🔍  "; }
+
+  /* Exercise Library */
+  .library {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .library h2 {
+    font-size: 1.5rem;
+    color: #7dd3fc;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .exercise-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .ex-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 18px;
+    transition: transform 0.2s;
+  }
+  .ex-card:hover { transform: translateY(-2px); }
+  .ex-card h3 {
+    font-size: 1rem;
+    color: #38bdf8;
+    margin-bottom: 6px;
+  }
+  .ex-card p {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .ex-card .target {
+    font-size: 0.75rem;
+    color: #0ea5e9;
+    background: rgba(14, 165, 233, 0.1);
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .watch-btn {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .watch-btn:hover { background: #b91c1c; }
+  .watch-btn::before { content: "🔍  "; }
+
+  /* Stretch section */
+  .stretch-section {
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+  .stretch-section h2 {
+    font-size: 1.5rem;
+    color: #a78bfa;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .stretch-subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+  }
+  .stretch-timing {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .timing-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .badge-pre { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .badge-post { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3); }
+  .badge-daily { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .stretch-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .str-card {
+    background: rgba(167,139,250,0.06);
+    border: 1px solid rgba(167,139,250,0.15);
+    border-radius: 14px;
+    padding: 18px;
+    transition: transform 0.2s;
+  }
+  .str-card:hover { transform: translateY(-2px); }
+  .str-card h3 { font-size: 1rem; color: #a78bfa; margin-bottom: 6px; }
+  .str-card p { font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin-bottom: 10px; }
+  .str-card .target {
+    font-size: 0.75rem;
+    color: #a78bfa;
+    background: rgba(167,139,250,0.1);
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .str-card .hold {
+    font-size: 0.78rem;
+    color: #34d399;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .watch-btn-purple {
+    display: inline-block;
+    background: #7c3aed;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .watch-btn-purple:hover { background: #6d28d9; }
+  .watch-btn-purple::before { content: "🔍  "; }
+
+  .tip-box {
+    max-width: 1100px;
+    margin: 32px auto 0;
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: 14px;
+    padding: 18px 22px;
+  }
+  .tip-box h3 { color: #38bdf8; margin-bottom: 10px; }
+  .tip-box ul { padding-left: 20px; }
+  .tip-box li { font-size: 0.88rem; color: #cbd5e1; margin-bottom: 6px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<h1>🏄 Surfer Shoulder Training Routine</h1>
+<p class="subtitle">Injury prevention + paddle power — 3 days/week, ~30–40 min per session</p>
+
+<!-- WEEKLY SCHEDULE -->
+<div class="week-grid">
+  <div class="day-card">
+    <h2>Day 1 — Monday</h2>
+    <div class="day-label">Strength & Paddle Power</div>
+    <div class="section-label-inner">💪 Shoulders</div>
+    <div class="exercise"><div class="exercise-name">Pull-Ups / Lat Pulldowns</div><div class="exercise-meta">3 × 8–10 reps</div></div>
+    <div class="exercise"><div class="exercise-name">Single-Arm Dumbbell Row</div><div class="exercise-meta">3 × 10 reps each side</div></div>
+    <div class="exercise"><div class="exercise-name">Band External Rotation</div><div class="exercise-meta">3 × 15 reps each side</div></div>
+    <div class="exercise"><div class="exercise-name">Prone Y-T-W Raises</div><div class="exercise-meta">2 × 10 reps per letter</div></div>
+    <div class="section-label-inner core-label">🔥 Core</div>
+    <div class="exercise core-ex"><div class="exercise-name">Dead Bug</div><div class="exercise-meta">3 × 10 reps each side</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Side Plank with Rotation</div><div class="exercise-meta">3 × 8 reps each side</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Mountain Climbers</div><div class="exercise-meta">3 × 30 seconds</div></div>
+  </div>
+
+  <div class="day-card">
+    <h2>Day 2 — Wednesday</h2>
+    <div class="day-label">Stability & Rotator Cuff</div>
+    <div class="section-label-inner">💪 Shoulders</div>
+    <div class="exercise"><div class="exercise-name">Face Pulls</div><div class="exercise-meta">3 × 15 reps</div></div>
+    <div class="exercise"><div class="exercise-name">Band Pull-Aparts</div><div class="exercise-meta">3 × 15 reps</div></div>
+    <div class="exercise"><div class="exercise-name">Shoulder Dislocations (band/stick)</div><div class="exercise-meta">3 × 10 slow reps</div></div>
+    <div class="exercise"><div class="exercise-name">Prone Swimmer / Reverse Snow Angels</div><div class="exercise-meta">2 × 15 reps</div></div>
+    <div class="section-label-inner core-label">🔥 Core</div>
+    <div class="exercise core-ex"><div class="exercise-name">Hollow Body Hold</div><div class="exercise-meta">3 × 20–30 seconds</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Bird Dog</div><div class="exercise-meta">3 × 10 reps each side</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Russian Twists</div><div class="exercise-meta">3 × 20 reps (with or without weight)</div></div>
+  </div>
+
+  <div class="day-card">
+    <h2>Day 3 — Friday</h2>
+    <div class="day-label">Endurance + Full Circuit</div>
+    <div class="section-label-inner">💪 Shoulders</div>
+    <div class="exercise"><div class="exercise-name">Band Pull-Aparts</div><div class="exercise-meta">3 × 20 reps (lighter band)</div></div>
+    <div class="exercise"><div class="exercise-name">Pull-Ups</div><div class="exercise-meta">3 × max reps</div></div>
+    <div class="exercise"><div class="exercise-name">Face Pulls</div><div class="exercise-meta">3 × 15 reps</div></div>
+    <div class="exercise"><div class="exercise-name">Scapular Push-Ups</div><div class="exercise-meta">3 × 12 reps</div></div>
+    <div class="section-label-inner core-label">🔥 Core</div>
+    <div class="exercise core-ex"><div class="exercise-name">Plank to Down-Dog</div><div class="exercise-meta">3 × 10 reps</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Side Plank with Rotation</div><div class="exercise-meta">3 × 10 reps each side</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Mountain Climbers</div><div class="exercise-meta">3 × 40 seconds</div></div>
+    <div class="exercise core-ex"><div class="exercise-name">Pallof Press</div><div class="exercise-meta">3 × 12 reps each side</div></div>
+  </div>
+
+  <div class="day-card" style="opacity:0.6">
+    <h2>Tue / Thu / Sat</h2>
+    <div class="day-label">Active Recovery or Surf!</div>
+    <div class="exercise rest-day"><div class="exercise-name">🌊 Surf session</div><div class="exercise-meta">The best training of all</div></div>
+    <div class="exercise rest-day"><div class="exercise-name">🧘 Light stretching / yoga</div><div class="exercise-meta">10–15 min</div></div>
+    <div class="exercise rest-day"><div class="exercise-name">😴 Sunday — Full rest</div><div class="exercise-meta">Recovery is where gains happen</div></div>
+  </div>
+</div>
+
+<!-- EXERCISE LIBRARY -->
+<div class="library">
+  <h2>📚 Exercise Video Library</h2>
+  <div class="exercise-cards">
+
+    <div class="ex-card">
+      <h3>Pull-Ups / Lat Pulldowns</h3>
+      <span class="target">Lats · Biceps · Core</span>
+      <p>The king of paddle strength. Mimics the exact pulling motion of paddling. If you can't do full pull-ups yet, use a band for assistance or do lat pulldowns.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=pull+ups+proper+form+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Single-Arm Dumbbell Row</h3>
+      <span class="target">Lats · Rear Delt · Rhomboids</span>
+      <p>Closely mimics the paddling stroke. Keep your back flat, elbow close to the body, and drive it back deliberately. 2:1 pulling to pressing ratio is your goal.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=single+arm+dumbbell+row+form+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Band External Rotation</h3>
+      <span class="target">Rotator Cuff (Infraspinatus · Teres Minor)</span>
+      <p>The most important injury-prevention exercise for surfers. Elbow at 90°, keep it glued to your side, and rotate your forearm outward against band resistance. Slow and controlled.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=band+external+rotation+rotator+cuff+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Face Pulls</h3>
+      <span class="target">Rear Deltoids · Rotator Cuff · Upper Traps</span>
+      <p>Pull a cable or band toward your face with elbows high and wide. Counteracts the forward-rounded posture from paddling. Do these every single session.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=face+pulls+correct+form+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Band Pull-Aparts</h3>
+      <span class="target">Rear Deltoids · Rhomboids · Scapular Stabilizers</span>
+      <p>Hold a band in front of you at shoulder height, arms straight. Pull it apart until it touches your chest. Squeeze the shoulder blades at the end. Great as a warm-up too.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=band+pull+aparts+shoulder+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Prone Y-T-W Raises</h3>
+      <span class="target">Lower Traps · Posterior Shoulder · Rotator Cuff</span>
+      <p>Lie face down and raise arms into Y, T, and W shapes. Targets the lower trapezius — the muscle most commonly weak in surfers and desk workers. Use very light weight or bodyweight only.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=prone+YTW+raises+lower+trap+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Scapular Push-Ups</h3>
+      <span class="target">Serratus Anterior · Scapular Control</span>
+      <p>In a push-up position with arms straight, let the shoulder blades squeeze together, then push them apart by rounding the upper back. No elbow bending. Trains the "foundation" of shoulder stability.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=scapular+push+ups+serratus+anterior+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="ex-card">
+      <h3>Shoulder Dislocations</h3>
+      <span class="target">Full Shoulder Mobility · Chest Stretch</span>
+      <p>Using a band or broomstick held wide, slowly pass it overhead from front to back with straight arms. Improves overhead mobility and is an excellent warm-up before surfing or lifting.</p>
+      <a class="watch-btn" href="https://www.youtube.com/results?search_query=shoulder+dislocations+band+mobility+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CORE LIBRARY -->
+<div class="core-section">
+  <h2>🔥 Core Exercise Library</h2>
+  <div class="core-cards">
+
+    <div class="core-card">
+      <h3>Side Plank with Rotation</h3>
+      <span class="target">Obliques · Glute Med · Shoulder Stability</span>
+      <p>Get into a side plank, then reach your top arm under your body and rotate back open to the sky. This is about as surf-specific as core training gets — it trains rotational power, lateral stability, and the shoulder all at once.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=side+plank+with+rotation+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Mountain Climbers</h3>
+      <span class="target">Hip Flexors · Obliques · Shoulder Endurance</span>
+      <p>In a push-up position, drive alternating knees toward your chest at pace. Builds the core endurance and shoulder stability you need when paddling hard through whitewater. Keep your hips level — don't let them pike up.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=mountain+climbers+proper+form+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Dead Bug</h3>
+      <span class="target">Deep Core · Anti-Rotation · Lower Back Protection</span>
+      <p>Lying on your back, extend opposite arm and leg toward the floor while keeping your lower back pressed flat. One of the best exercises for building the deep core stability that protects your spine during pop-ups and heavy wipeouts.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Bird Dog</h3>
+      <span class="target">Erector Spinae · Glutes · Anti-Rotation Core</span>
+      <p>On all fours, extend opposite arm and leg while keeping your hips square and back flat. Trains the back-body strength and balance you use constantly when arching on the board and during the pop-up. Slow and controlled is the key.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=bird+dog+exercise+core+stability+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Hollow Body Hold</h3>
+      <span class="target">Rectus Abdominis · Hip Flexors · Full-Body Tension</span>
+      <p>Lie on your back, press your lower back into the floor, and lift your arms, shoulders, and legs off the ground into a banana shape. Builds the total-body tension and compression strength that makes your pop-up explosive and controlled.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=hollow+body+hold+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Russian Twists</h3>
+      <span class="target">Obliques · Rotational Power · Hip Flexors</span>
+      <p>Seated with feet raised, rotate a weight or your hands side to side. Directly trains the rotational power you use when carving and pumping down the line. Add a medicine ball or plate to progress over time.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=russian+twists+core+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Plank to Down-Dog</h3>
+      <span class="target">Serratus Anterior · Core · Shoulder Mobility</span>
+      <p>From a plank, push your hips up into a downward dog position by pressing through your hands, then return. This hybrid move trains the serratus anterior and core together — exactly the muscles that link your shoulder stability to your paddle power.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=plank+to+downward+dog+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="core-card">
+      <h3>Pallof Press</h3>
+      <span class="target">Anti-Rotation Core · Obliques · Hip Stability</span>
+      <p>Stand side-on to a cable or anchored band. Hold it at your chest, then press it straight out and hold for a second before returning. Your core has to resist rotating toward the band — this trains exactly the anti-rotation stiffness surfers need in big surf and heavy duck dives.</p>
+      <a class="watch-btn-orange" href="https://www.youtube.com/results?search_query=pallof+press+anti+rotation+core+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- STRETCHING SECTION -->
+<div class="stretch-section">
+  <h2>🧘 Shoulder Stretching Library</h2>
+  <p class="stretch-subtitle">Hold all stretches for 30–45 seconds · Never stretch into pain · Best done when muscles are warm</p>
+
+  <div class="stretch-timing">
+    <span class="timing-badge badge-pre">🌅 Pre-surf warm-up</span>
+    <span class="timing-badge badge-post">🌊 Post-surf / post-workout</span>
+    <span class="timing-badge badge-daily">📅 Daily (anytime)</span>
+  </div>
+
+  <div class="stretch-cards">
+
+    <div class="str-card">
+      <h3>Cross-Body Shoulder Stretch</h3>
+      <span class="target">Posterior Capsule · Rear Deltoid</span>
+      <span class="hold">⏱ 30–45s each side · Daily</span>
+      <p>Pull one arm across your chest with the opposite hand, keeping the shoulder down and relaxed. Essential for releasing tightness in the back of the shoulder that builds up from paddling.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=cross+body+shoulder+stretch+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Doorway / Pec Minor Stretch</h3>
+      <span class="target">Pectoralis Minor · Anterior Shoulder</span>
+      <span class="hold">⏱ 30–45s each side · Daily</span>
+      <p>Place your forearm on a door frame at 90° and gently lean forward. Counteracts the forward-rounded posture from hours of paddling. Do this every day — it's the single most important stretch for surfers.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=doorway+pec+minor+chest+stretch+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Sleeper Stretch</h3>
+      <span class="target">Posterior Rotator Cuff · Internal Rotation</span>
+      <span class="hold">⏱ 30–45s each side · Post-surf/workout</span>
+      <p>Lie on your side with your arm at 90°, then gently use your other hand to press your forearm down toward the floor. Targets the posterior capsule — tightness here is a leading cause of shoulder impingement in paddlers.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=sleeper+stretch+posterior+shoulder+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Thread the Needle</h3>
+      <span class="target">Thoracic Spine · Upper Back · Posterior Shoulder</span>
+      <span class="hold">⏱ 30s each side · Pre-surf & daily</span>
+      <p>On all fours, slide one arm under your body along the floor, allowing your upper back to rotate. Brilliant for releasing thoracic spine stiffness — if your upper back is locked up, your shoulders have to overwork when paddling.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=thread+the+needle+thoracic+rotation+stretch+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Overhead Tricep / Lat Stretch</h3>
+      <span class="target">Latissimus Dorsi · Triceps · Side Body</span>
+      <span class="hold">⏱ 30–45s each side · Post-surf/workout</span>
+      <p>Reach one arm overhead, bend it behind your head, and use the other hand to gently pull the elbow. Stretches the lats — your primary paddle muscles — which shorten and tighten with heavy use and need regular lengthening.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=overhead+lat+tricep+stretch+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Child's Pose with Arm Reach</h3>
+      <span class="target">Lats · Teres Major · Thoracic Spine</span>
+      <span class="hold">⏱ 45–60s · Post-surf/workout</span>
+      <p>From child's pose, walk your hands forward and to one side to target the lat on each side. A deeply relaxing decompression for the entire shoulder complex after a hard session in the water.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=childs+pose+lat+stretch+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Eagle Arms Stretch</h3>
+      <span class="target">Rear Deltoid · Rhomboids · Upper Traps</span>
+      <span class="hold">⏱ 30s each side · Pre-surf warm-up & daily</span>
+      <p>Cross your arms at the elbows in front of you and wrap them so the backs of the hands face each other or palms meet. Lift the elbows and pull forward. Opens up the entire posterior shoulder region beautifully.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=eagle+arms+stretch+yoga+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+    <div class="str-card">
+      <h3>Wall Angel Stretch</h3>
+      <span class="target">Chest · Anterior Shoulder · Thoracic Extension</span>
+      <span class="hold">⏱ 10 slow reps · Daily</span>
+      <p>Stand with your back against a wall, arms in a goalpost position. Slowly slide your arms up and down the wall, keeping your back, head, and arms in contact throughout. Reverses the "surf slump" posture and resets your shoulder alignment.</p>
+      <a class="watch-btn-purple" href="https://www.youtube.com/results?search_query=wall+angels+posture+exercise+tutorial" target="_blank">Search on YouTube</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="tip-box">
+  <h3>💡 Surfer's Shoulder Tips</h3>
+  <ul>
+    <li><strong>Warm up before every surf:</strong> Do shoulder circles, arm swings, and 10 band pull-aparts before hitting the water.</li>
+    <li><strong>2:1 pulling to pressing:</strong> Surfers already push a lot (paddling, pop-up). Do twice as many rows/pulls as push exercises in your gym work.</li>
+    <li><strong>Don't skip the rear shoulder:</strong> Impingement and rotator cuff tears happen because the front of the shoulder is overdeveloped vs. the back. Prioritize face pulls and external rotations.</li>
+    <li><strong>Stretch your chest daily:</strong> Stand in a doorway and stretch the pec minor. Rounded shoulders from paddling compress the rotator cuff tendons — opening your chest counteracts this.</li>
+    <li><strong>After flat spells — take it easy:</strong> Most shoulder injuries happen when surfers go from 0 to 4-hour sessions after time off. Ease back in gradually.</li>
+    <li><strong>Pain = stop:</strong> These exercises should feel like effort, not pain. If anything causes shoulder pain during or after, reduce load or see a physiotherapist.</li>
+    <li><strong>Stretch timing matters:</strong> Do dynamic stretches (shoulder dislocations, thread the needle) before surfing. Save deep static holds (sleeper stretch, doorway stretch) for after — when muscles are warm and pliable.</li>
+    <li><strong>The daily non-negotiables:</strong> Even on rest days, do the doorway pec stretch, cross-body stretch, and wall angels. Just 5 minutes a day makes a bigger difference than any single gym session.</li>
+  </ul>
+</div>
+
+</body>
+</html>

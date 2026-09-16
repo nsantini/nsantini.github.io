@@ -1,0 +1,6 @@
+---
+title: Rigour
+feed: show
+date: 19-07-2025
+---
+I took on some hands on tasks to help one of the squads I'm supporting in my new job. The work is basically doing some front-end code for the feature we are building. The cool think is that we have a system in place, where we all follow this same structure/template. It includes things like state management, form management, and unit testing. Because of the high level of scrutiny we have in this industry, we have in place what we call *controls*. These controls are things we do to manage *risk*. Which, if it comes to pass, it becomes an *incident*. In this case, unit testing our code is part of those controls, like code review, and code management are too. Now, normally I wouldn't put too much effort on unit testing front end code. But here is a must. So I'm forced to be rigorous about it. Which is a great way for me to practice this skill that does not come naturally to me. So here is to controls, and how they bring an opportunity to improve my craft!

@@ -1,0 +1,239 @@
+---
+---
+
+<!-------------------------------------------------------------------------------------
+*
+* MIT License
+* Copyright (c) 2020 Raghuveer S, Hiran Venugopalan, Asim K T
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+------------------------------------------------------------------------------------>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Nico Santini" property="og:site_name" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <meta charset="utf-8">
+    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+    {%- if page.title -%}
+    <meta content="{{ page.title }}" property="og:title">
+    <meta content="article" property="og:type">
+    {%- else -%}
+    <meta content="{{ site.heading }}" property="og:title">
+    <meta content="website" property="og:type">
+    {%- endif -%}
+    {%- if page.img -%}
+    <meta property="og:image" content="/assets/images/{{ page.img }}">
+    {%- else -%}
+    <meta property="og:image" content="/assets/img/bg.jpg">
+    {%- endif -%}
+    {%- if page.description -%}
+    <meta content="{{ page.description | strip_html | strip | escape | truncate: 200 }}" property="og:description">
+    {%- else if page.permalink == "/" -%}
+    <meta content="{{ content | strip_html | strip | escape | truncate: 200 }}" property="og:description">
+    {%- else if page.content-type == "notes" or page.content-type == "post" or page.content-type == "stories" -%}
+    <meta content="{{ page.content | strip_html | strip | escape | truncate: 200 }}" property="og:description">
+    {%- endif -%}
+
+    <title>{{page.title}} - {{site.heading}}</title>
+    <script data-host="https://microanalytics.io" data-dnt="false" src="https://microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
+    <link rel="canonical" href="{{site.url}}{{page.url}}" />
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/img/profile.png">
+    <link rel="icon" href="{{ site.baseurl }}/assets/img/favicon.ico" sizes="16x16" />
+    <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet" media="all" class="default" />
+    <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet" media="all" class="default" />
+    <link href="{{ site.baseurl }}/assets/css/Util.css" rel="stylesheet" media="all" class="default" />
+    <link href="{{ site.baseurl }}/assets/css/vendor/Katex.css" rel="stylesheet" media="all" class="default" />
+
+    <!--[if IE]>
+        <link href="/assets/css/ie-target.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <!--<link href="/assets/css/prism.css" rel="stylesheet" />-->
+    <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml">
+</head>
+
+<body>
+    <main>
+    {%- include Nav.html -%}
+    <section class="section">
+        <div class="columns is-centered">
+            <!-- Homepage Layout-->
+            {%- if page.permalink == "/" -%}
+            <div class="column is-6-widescreen  is-8-desktop is-8-tablet is-12-mobile">
+                <div class="note-page-section">
+                    <div class="jumbo">{{page.title}}</div>
+                    {%- include Content.html -%}
+                </div>
+            </div>
+            {%- endif -%}
+
+            <!--- Notes Feed Layout-->
+            {%- if page.feedformat -%}
+            <div class="column is-6-widescreen  is-8-desktop is-8-tablet is-12-mobile">
+                {%- if page.permalink != "/" -%}
+                <h5 class="meta-title"><a href="/">← Note</a></h5>
+                {%- endif -%}
+                <div class="jumbo">{{page.title}}</div>
+                {%- include Content.html -%}
+                {%- include Feed.html -%}
+            {%- endif -%}
+
+            <!--- Notes Layout-->
+            {%- if page.content-type == "notes" -%}
+            <div class="column is-5-widescreen  is-6-desktop is-8-tablet is-12-mobile">
+                <div class="note-page-section">
+                    <div>
+                        <a onclick="window.history.back();">
+                            <h5 class="meta-title">← BACK</h5>
+                        </a>
+                    </div>
+                    <!--- List type Note Layout-->
+                    {%- if page.format == "list" -%}
+                    <style>
+                        li {border-bottom: 1px solid var(--color-border-light); list-style: none; padding: 0.4rem 0 0.4rem 0;}
+                        .content ul { padding-left: 0px;}
+                        h3 {padding-top: 1rem; padding-bottom: 0rem;}
+                    </style>
+                    {%- endif -%}
+                    <h1>{{page.title}}</h1>
+                    {%- include Content.html -%}
+                    {%- include Backlinks.html -%}
+                </div>
+            </div>
+            {%- endif -%}
+
+
+            <!--- Post Feed Layout-->
+            {%- if page.permalink == "/posts" -%}
+            <div class="column is-6-widescreen  is-8-desktop is-8-tablet is-12-mobile">
+                {%- if page.permalink != "/" -%}
+                <h5 class="meta-title"><a href="/">← Note</a></h5>
+                {%- endif -%}
+                <div class="jumbo">{{page.title}}</div>
+                {%- include Content.html -%}
+                {%- if site.preferences.search.enabled -%}
+                    <!-- search bar -->
+                    <div class="block">
+                        <input class="input is-medium" type="text" placeholder="Search..." id="search-input" autocomplete="off">
+                        <div id="search-results" class="search-results"></div>
+                    </div>
+                    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/vendor/lunr.min.js"></script>
+                    <script src="{{ site.baseurl }}/assets/js/Search.js"></script>
+                {%- endif -%}
+                {% for post in site.posts %}
+                    <div class="list-feed">
+                        <a href="{{ site.baseurl }}{{post.url}}" style="text-decoration: none;display: flex;justify-content: space-between;flex-direction: row;width: 100%;">
+                            <div class="writinglist-title">{{post.title }}</div>
+                        </a>
+                    </div>
+                {%- endfor -%}
+            </div>
+
+            {%- endif -%}
+
+            <!--- Post Layout-->
+            {%- if page.content-type == "post"  -%}
+            <div class="column is-5-widescreen  is-6-desktop is-8-tablet is-12-mobile">
+                <div class="note-page-section">
+                    <div>
+                        <a onclick="window.history.back();">
+                            <h5 class="meta-title">← BACK</h5>
+                        </a>
+                    </div>
+                    <h1>{{page.title}}</h1>
+                    {%- include Content.html -%}
+                    {%- include Backlinks.html -%}
+                </div>
+                <div id="remark42"></div>
+                <script>
+                    var remark_config = remark_config={site_id:"santini.nz",host:"https://remark.santini.nz",url:window.location.href,components:["embed","counter"]};
+                </script>
+                <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+            </div>
+            {%- endif -%}
+
+            <!--- Stories Feed Layout-->
+            {%- if page.permalink == "/stories" -%}
+            <div class="column is-6-widescreen  is-8-desktop is-8-tablet is-12-mobile">
+                {%- if page.permalink != "/" -%}
+                <h5 class="meta-title"><a href="/">← Note</a></h5>
+                {%- endif -%}
+                <div class="jumbo">{{page.title}}</div>
+                {%- include Content.html -%}
+                {%- if site.preferences.search.enabled -%}
+                    <!-- search bar -->
+                    <div class="block">
+                        <input class="input is-medium" type="text" placeholder="Search..." id="search-input" autocomplete="off">
+                        <div id="search-results" class="search-results"></div>
+                    </div>
+                    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/vendor/lunr.min.js"></script>
+                    <script src="{{ site.baseurl }}/assets/js/Search.js"></script>
+                {%- endif -%}
+                {% for post in site.stories %}
+                    <div class="list-feed">
+                        <a href="{{ site.baseurl }}{{post.url}}" style="text-decoration: none;display: flex;justify-content: space-between;flex-direction: row;width: 100%;">
+                            <div class="writinglist-title">{{post.title }}</div>
+                        </a>
+                    </div>
+                {%- endfor -%}
+            </div>
+
+            {%- endif -%}
+
+            <!--- Story Layout-->
+            {%- if page.content-type == "stories"  -%}
+            <div class="column is-5-widescreen  is-6-desktop is-8-tablet is-12-mobile">
+                <div class="note-page-section">
+                    <div>
+                        <a onclick="window.history.back();">
+                            <h5 class="meta-title">← BACK</h5>
+                        </a>
+                    </div>
+                    <h1>{{page.title}}</h1>
+                    {%- include Content.html -%}
+                    {%- include Backlinks.html -%}
+                </div>
+                <div id="remark42"></div>
+                <script>
+                    var remark_config = remark_config={site_id:"santini.nz",host:"https://remark.santini.nz",url:window.location.href,components:["embed","counter"]};
+                </script>
+                <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+            </div>
+            {%- endif -%}
+
+            <!--- Static Page Layout-->
+            {%- if page.content-type == "static" -%}
+            <div class="column is-5-widescreen  is-6-desktop is-8-tablet is-12-mobile">
+                        <div class="jumbo">{{page.title}}</div>
+                        {%- include Content.html -%}
+                </div>
+            {%- endif -%}
+        </div>
+    </section>
+    {%- include Footer.html -%}
+</main>
+</body>
+</html>
