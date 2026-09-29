@@ -1,6 +1,6 @@
 ---
 title: Small teams and the bus factor
-date: 29-09-2026
+date: 2026-09-29
 feed: show
 ---
 ## Small teams and the bus factor
